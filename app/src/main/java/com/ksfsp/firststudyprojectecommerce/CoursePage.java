@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.ksfsp.firststudyprojectecommerce.model.Order;
 
 public class CoursePage extends AppCompatActivity {
 
@@ -27,5 +31,13 @@ public class CoursePage extends AppCompatActivity {
         coursePageDate.setText(getIntent().getStringExtra("courseDate"));
         coursePageLevel.setText(getIntent().getStringExtra("courseLevel"));
         coursePageText.setText(getIntent().getStringExtra("courseText"));
+    }
+    public void addToCart(View view){
+        int id = getIntent().getIntExtra("courseId", 0);
+        if(Order.itemsId.add(id)) {
+            Toast.makeText(getApplicationContext(), "Item successfully added!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getApplicationContext(), "You added this item yet", Toast.LENGTH_SHORT).show();
+        }
     }
 }

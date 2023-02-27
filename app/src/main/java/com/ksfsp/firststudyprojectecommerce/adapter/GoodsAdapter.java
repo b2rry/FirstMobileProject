@@ -1,5 +1,6 @@
 package com.ksfsp.firststudyprojectecommerce.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
@@ -41,9 +42,9 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.GoodsViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GoodsAdapter.GoodsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GoodsAdapter.GoodsViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.courseBg.setCardBackgroundColor(Color.parseColor(goodsList.get(position).getColor()));
-        int imgId = context.getResources().getIdentifier(goodsList.get(position).getImg(),"drawable", context.getPackageName());
+        @SuppressLint("DiscouragedApi") int imgId = context.getResources().getIdentifier(goodsList.get(position).getImg(),"drawable", context.getPackageName());
         holder.courseImg.setImageResource(imgId);
         holder.courseTitle.setText(goodsList.get(position).getTitle());
         holder.courseDate.setText(goodsList.get(position).getDate());
@@ -60,6 +61,7 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.GoodsViewHol
                 intent.putExtra("courseDate", goodsList.get(position).getDate());
                 intent.putExtra("courseLevel", goodsList.get(position).getLevel());
                 intent.putExtra("courseText", goodsList.get(position).getText());
+                intent.putExtra("courseId", goodsList.get(position).getId());
 
                 context.startActivity(intent);
             }

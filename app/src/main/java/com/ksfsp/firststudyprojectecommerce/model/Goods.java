@@ -3,6 +3,7 @@ package com.ksfsp.firststudyprojectecommerce.model;
 public class Goods {
 
     int id;
+    int category;
     String img;
     String title;
     String date;
@@ -10,14 +11,23 @@ public class Goods {
     String color;
     String text;
 
-    public Goods(int id, String img, String title, String date, String level, String color, String text) {
+    public Goods(int id, int category, String img, String title, String date, String level, String color, String text) {
         this.id = id;
+        this.category = category;
         this.img = img;
         this.title = title;
         this.date = date;
         this.level = level;
         this.color = color;
         this.text = text;
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
     }
 
     public int getId() {
