@@ -126,7 +126,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="60dp"
-        android:layout_marginBottom="130dp"
+        android:layout_marginBottom="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
@@ -139,10 +139,33 @@
         android:layout_marginBottom="35dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/study_prj"
-        android:onClick="showCart"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
         app:srcCompat="@drawable/ic_cart_button" />
+
+    <EditText
+        android:id="@+id/editMeme"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:ems="10"
+        android:hint="@string/meme_text_field"
+        android:inputType="textPersonName"
+        android:onClick="memAction"
+        app:layout_constraintBottom_toTopOf="@+id/cart_button"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/goodsRecycler" />
+
+    <TextView
+        android:id="@+id/memeText"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/cart_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editMeme"
+        app:layout_constraintTop_toBottomOf="@+id/goodsRecycler" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

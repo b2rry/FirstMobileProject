@@ -9,6 +9,9 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.ksfsp.firststudyprojectecommerce.adapter.CategoryAdapter;
 import com.ksfsp.firststudyprojectecommerce.adapter.GoodsAdapter;
@@ -24,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
     CategoryAdapter categoryAdapter;
     static GoodsAdapter goodsAdapter;
     static List<Goods> courseList = new ArrayList<>(0);
-    static final List<Goods> allCourseList = new ArrayList<>(0);
-
+    static List<Goods> allCourseList = new ArrayList<>(0);
+    private ImageButton imageButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         categoryList.add(new Category(6, "Duraley"));
 
         setCategoryRecycler(categoryList);
+        allCourseList.clear();
 
         allCourseList.add(new Goods(1, 1, "ic_java", "Java-Developer\nprofession", "17 June", "intermediate", "#424345", "Программа обучения Джава – рассчитана на новичков в данной сфере.\n\nЗа программу вы изучите построение графических приложений под ПК, разработку веб сайтов на основе Java  Spring Boot, изучите построение  полноценных Андроид приложений и отлично изучите сам язык Джава!"));
         allCourseList.add(new Goods(2, 2,"ic_python", "Python-Developer\nprofession", "29 July", "beginning", "#9FA52D", "Представляем вам уроки программирования Python для начинающих. Обучение с нуля для чайников. Большой видео курс по изучению языка Питон."));
@@ -48,8 +52,18 @@ public class MainActivity extends AppCompatActivity {
         allCourseList.add(new Goods(5, 1, "ic_java", "Java-Developer\nprofession", "19 June", "intermediate", "#424345", "Программа обучения Джава – рассчитана на новичков в данной сфере. За программу вы изучите построение графических приложений под ПК, разработку веб сайтов на основе Java  Spring Boot, изучите построение  полноценных Андроид приложений и отлично изучите сам язык Джава!"));
         allCourseList.add(new Goods(6, 2,"ic_python", "Python-Developer\nprofession", "27 July", "beginning", "#9FA52D", "Представляем вам уроки программирования Python для начинающих.\nОбучение с нуля для чайников.\nБольшой видео курс по изучению языка Питон."));
 
+        courseList.clear();
         courseList.addAll(allCourseList);
         setCourseRecycler(courseList);
+
+        imageButton = findViewById(R.id.cart_button);
+        imageButton.setOnClickListener(new View.OnClickListener(){//для понимания альтернативной установки слушателя, кроме onClick свойства виджета
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(MainActivity.this, ShoppingCart.class);
+                startActivity(intent);
+            }
+        } );
     }
 
     private void setCourseRecycler(List<Goods> courseList) {
@@ -81,8 +95,14 @@ public class MainActivity extends AppCompatActivity {
             goodsAdapter.notifyDataSetChanged();
         }
     }
-    public void showCart(View view){
-        Intent intent = new Intent(this, ShoppingCart.class);
-        startActivity(intent);
+//    public void showCart(View view){
+//        Intent intent = new Intent(this, ShoppingCart.class);
+//        startActivity(intent);
+//    }
+
+    public void memAction(View view){
+        EditText editText = findViewById(R.id.editMeme);
+        TextView textView = findViewById(R.id.memeText);
+        textView.setText(editText.getText());
     }
 }

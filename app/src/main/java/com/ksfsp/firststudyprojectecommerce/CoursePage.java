@@ -3,6 +3,7 @@ package com.ksfsp.firststudyprojectecommerce;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -39,5 +40,9 @@ public class CoursePage extends AppCompatActivity {
         }else{
             Toast.makeText(getApplicationContext(), "You added this item yet", Toast.LENGTH_SHORT).show();
         }
+    }
+    public void goHomePage(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
