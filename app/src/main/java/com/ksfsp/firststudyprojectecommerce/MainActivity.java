@@ -1,17 +1,21 @@
 package com.ksfsp.firststudyprojectecommerce;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ksfsp.firststudyprojectecommerce.adapter.CategoryAdapter;
 import com.ksfsp.firststudyprojectecommerce.adapter.GoodsAdapter;
@@ -76,6 +80,39 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) { // инжектим меню в активити
+        //return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) { // обрабатываем нажатые пункты меню по id (один не указан и обрабатывается методом из свойства onClick) (можно обрабатывать и так и так)
+        // получим идентификатор выбранного пункта меню
+        int id = item.getItemId();
+
+        // Операции для выбранного пункта меню
+        switch (id) {
+            case R.id.action_first:
+                Toast.makeText(getApplicationContext(), "You enter first action", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_second:
+                Toast.makeText(getApplicationContext(), "You enter second action", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_third:
+                Toast.makeText(getApplicationContext(), "You enter third action", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void onSettingItemClick(@NonNull MenuItem item){ // обработка первого пункта меню
+        Toast.makeText(getApplicationContext(), "You enter settings action", Toast.LENGTH_SHORT).show();
+    }
+
     private void setCourseRecycler(List<Goods> courseList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         goodsRecycler = findViewById(R.id.goodsRecycler);
@@ -105,15 +142,12 @@ public class MainActivity extends AppCompatActivity {
             goodsAdapter.notifyDataSetChanged();
         }
     }
-//    public void showCart(View view){
-//        Intent intent = new Intent(this, ShoppingCart.class);
-//        startActivity(intent);
-//    }
 
     public void memAction(View view){
         EditText editText = findViewById(R.id.editMeme);
         TextView textView = findViewById(R.id.memeText);
         textView.setText(editText.getText());
+        Log.i("Meme", "appears");
     }
 
     public void onTestActivityClick(View view) {
