@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     static List<Goods> courseList = new ArrayList<>(0);
     static List<Goods> allCourseList = new ArrayList<>(0);
     private ImageButton imageButton;
+    private TextView aboutProgram;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         setCourseRecycler(courseList);
 
         imageButton = findViewById(R.id.cart_button);
+        aboutProgram = findViewById(R.id.aboutUs);
+
         imageButton.setOnClickListener(new View.OnClickListener(){//для понимания альтернативной установки слушателя, кроме onClick свойства виджета
             @Override
             public void onClick(View view){
@@ -64,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         } );
+        aboutProgram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setCourseRecycler(List<Goods> courseList) {
@@ -104,5 +114,10 @@ public class MainActivity extends AppCompatActivity {
         EditText editText = findViewById(R.id.editMeme);
         TextView textView = findViewById(R.id.memeText);
         textView.setText(editText.getText());
+    }
+
+    public void onTestActivityClick(View view) {
+        Intent intent = new Intent(MainActivity.this, Test.class);
+        startActivity(intent);
     }
 }

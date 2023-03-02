@@ -31,7 +31,6 @@ public class ShoppingCart extends AppCompatActivity {
 
         ordersList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courseTitles));
 
-
     }
     public void goHomePage(View view){
         Intent intent = new Intent(this, MainActivity.class);
