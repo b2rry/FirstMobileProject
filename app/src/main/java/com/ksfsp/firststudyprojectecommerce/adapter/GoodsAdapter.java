@@ -42,7 +42,7 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.GoodsViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GoodsAdapter.GoodsViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull GoodsAdapter.GoodsViewHolder holder, @SuppressLint("RecyclerView") int position) { //инициализируем поля вложенного класса, устанавливаем онклик на itemView ()
         holder.courseBg.setCardBackgroundColor(Color.parseColor(goodsList.get(position).getColor()));
         @SuppressLint("DiscouragedApi") int imgId = context.getResources().getIdentifier(goodsList.get(position).getImg(),"drawable", context.getPackageName());
         holder.courseImg.setImageResource(imgId);

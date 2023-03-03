@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         // Операции для выбранного пункта меню
         switch (id) {
             case R.id.action_first:
-                Toast.makeText(getApplicationContext(), "You enter first action", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "You enter first action", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_second:
                 Toast.makeText(getApplicationContext(), "You enter second action", Toast.LENGTH_SHORT).show();
